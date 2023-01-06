@@ -113,3 +113,9 @@ function registeracc() {
       });
   
   }
+
+  function editacc(){
+
+
+    
+  }
