@@ -1,0 +1,13 @@
+.imgg{
+    width: auto;
+    max-width: 95%;
+    height: 300px;
+    margin: 2.5%;
+}
+
+.titulo{
+    color: black;
+    font-size: 30px;
+    text-decoration: none;
+    
+}
