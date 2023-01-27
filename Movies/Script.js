@@ -130,6 +130,52 @@ function getMovies() {
       for (const filme of responseJson.movies) {
         console.log(filme.name);
 
+        var divSup = document.createElement("div");
+        divSup.style = "text-align: center;";
+
+        var divSup1 = document.createElement("div");
+        divSup1.style = "margin: 5%;";
+
+        var divRow = document.createElement("div");
+        divRow.className = "row";
+
+        var divCol = document.createElement("div");
+        divCol.className = "col-sm-6 mb-3 mb-sm-0";
+
+        var divCard = document.createElement("div");
+        divCard.className = "card";
+
+        var divCardBody = document.createElement("div");
+        divCardBody.className = "card-body";
+
+        var a = document.createElement("a");
+        a.className = "titulo";
+        a.innerText = filme.name;
+        a.href="Filme.html"
+
+        var img = document.createElement("img");
+        img.className = "imgg mx-auto d-block";
+        img.src = filme.avatar;
+
+        var h5 = document.createElement("h5");
+        h5.className = "card-title";
+        h5.innerText = filme.description;
+
+        divCardBody.append(a)
+        divCardBody.append(img)
+        divCardBody.append(h5)
+console.log("ola")
+        divCard.append(divCardBody)
+        console.log("ola2")
+        divCol.append(divCard)
+        console.log("ola3")
+        divRow.append(divCol)
+        console.log("ola4")
+        divSup1.append(divRow)
+        console.log("ola5")
+        divSup.append(divSup1)
+        console.log("ola6")
+        document.getElementById("bodymov").append(divSup)
       }
     })
     .catch((error) => {
@@ -137,7 +183,7 @@ function getMovies() {
     });
 }
 
-function LoadMov(){
+function LoadMov() {
 
   fetch('https://my-movies.online/api/movies', {
     method: 'GET',
@@ -145,22 +191,9 @@ function LoadMov(){
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({
-
-      email: email,
-      password: password,
-    }),
   }).then((response) => response.json())
     .then((responseJson) => {
       console.log(responseJson);
-      if (responseJson.token != null) {
-        alert("sucesso")
-        localStorage.setItem("token", responseJson.token);
-        location.replace("user.html");
-      }
-      else {
-        alert("email ou password errada")
-      }
     })
     .catch((error) => {
       console.log(error);
@@ -176,19 +209,19 @@ function uploadAvatar() {
   formData.append('avatar', fileInput.files[0]);
 
   const options = {
-      method: 'POST',
-      body: formData,
-      headers: {
-          'Authorization': 'Bearer ' + token
-      }
+    method: 'POST',
+    body: formData,
+    headers: {
+      'Authorization': 'Bearer ' + token
+    }
   };
 
   fetch('https://my-movies.online/api/uploadAvatar', options)
     .then((response) => response.json())
-      .then((responseJson) => {
-          console.log(responseJson);
-      })
-      .catch((error) => {
-          console.log(error);
-      });
+    .then((responseJson) => {
+      console.log(responseJson);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 }
