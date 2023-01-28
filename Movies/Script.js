@@ -118,6 +118,10 @@ function getProfile() {
 }
 
 function getMovies() {
+
+  var num = 0;
+  var idcnt = 0;
+
   fetch('https://my-movies.online/api/movies', {
     method: 'GET',
     headers: {
@@ -130,58 +134,93 @@ function getMovies() {
       for (const filme of responseJson.movies) {
         console.log(filme.name);
 
-        var divSup = document.createElement("div");
-        divSup.style = "text-align: center;";
+        if (num == 0) {
+          var divSup = document.createElement("div");
+          divSup.style = "text-align: center;";
 
-        var divSup1 = document.createElement("div");
-        divSup1.style = "margin: 5%;";
+          var divSup1 = document.createElement("div");
+          divSup1.style = "margin: 5%;";
 
-        var divRow = document.createElement("div");
-        divRow.className = "row";
+          var divRow = document.createElement("div");
+          divRow.className = "row";
+          divRow.id = "rowplcm" + idcnt;
 
-        var divCol = document.createElement("div");
-        divCol.className = "col-sm-6 mb-3 mb-sm-0";
+          var divCol = document.createElement("div");
+          divCol.className = "col-sm-6 mb-3 mb-sm-0";
 
-        var divCard = document.createElement("div");
-        divCard.className = "card";
+          var divCard = document.createElement("div");
+          divCard.className = "card";
 
-        var divCardBody = document.createElement("div");
-        divCardBody.className = "card-body";
+          var divCardBody = document.createElement("div");
+          divCardBody.className = "card-body";
 
-        var a = document.createElement("a");
-        a.className = "titulo";
-        a.innerText = filme.name;
-        a.href="Filme.html"
+          var a = document.createElement("a");
+          a.className = "titulo";
+          a.innerText = filme.name;
+          a.href = "Filme.html"
 
-        var img = document.createElement("img");
-        img.className = "imgg mx-auto d-block";
-        img.src = filme.avatar;
+          var img = document.createElement("img");
+          img.className = "imgg mx-auto d-block";
+          img.src = filme.avatar;
 
-        var h5 = document.createElement("h5");
-        h5.className = "card-title";
-        h5.innerText = filme.description;
+          var h5 = document.createElement("h5");
+          h5.className = "card-title";
+          h5.innerText = filme.description;
 
-        divCardBody.append(a)
-        divCardBody.append(img)
-        divCardBody.append(h5)
-console.log("ola")
-        divCard.append(divCardBody)
-        console.log("ola2")
-        divCol.append(divCard)
-        console.log("ola3")
-        divRow.append(divCol)
-        console.log("ola4")
-        divSup1.append(divRow)
-        console.log("ola5")
-        divSup.append(divSup1)
-        console.log("ola6")
-        document.getElementById("bodymov").append(divSup)
+          divCardBody.append(img)
+          divCardBody.append(a)
+          divCardBody.append(h5)
+          divCard.append(divCardBody)
+          divCol.append(divCard)
+          divRow.append(divCol)
+          divSup1.append(divRow)
+          divSup.append(divSup1)
+          document.getElementById("bodymov").append(divSup)
+
+          num = 1;
+        }
+        else {
+
+          var divCol = document.createElement("div");
+          divCol.className = "col-sm-6 mb-3 mb-sm-0";
+
+          var divCard = document.createElement("div");
+          divCard.className = "card";
+
+          var divCardBody = document.createElement("div");
+          divCardBody.className = "card-body";
+
+          var a = document.createElement("a");
+          a.className = "titulo";
+          a.innerText = filme.name;
+          a.href = "Filme.html"
+
+          var img = document.createElement("img");
+          img.className = "imgg mx-auto d-block";
+          img.src = filme.avatar;
+
+          var h5 = document.createElement("h5");
+          
+          divCardBody.append(img)
+          divCardBody.append(a)
+          divCardBody.append(h5)
+          divCard.append(divCardBody)
+          divCol.append(divCard)
+          divRow.append(divCol)
+
+          document.getElementById("rowplcm" + idcnt).append(divCol)
+
+          idcnt += 1;
+          num = 0;
+        }
       }
     })
     .catch((error) => {
       console.log(error);
     });
 }
+
+
 
 function LoadMov() {
 
@@ -224,4 +263,36 @@ function uploadAvatar() {
     .catch((error) => {
       console.log(error);
     });
+}
+
+function editacc(){
+
+  var name = document.getElementById("name").value
+  var bio = document.getElementById("bio").value
+
+  fetch('http://my-movies.online/api/editProfile', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      name: name,
+      bio: bio,
+    }),
+  }).then((response) => response.json())
+    .then((responseJson) => {
+      console.log(responseJson);
+
+      if (responseJson.message == "") {
+        alert("conta editada com sucesso")
+      }
+      else {
+        alert("não foi possivel editar a conta")
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
 }
