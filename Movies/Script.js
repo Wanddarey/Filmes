@@ -71,6 +71,12 @@ function login() {
 
 }
 
+function logout(){
+
+localStorage.
+
+}
+
 function checklogin() {
   try {
     var token = localStorage.getItem("token")
@@ -224,7 +230,7 @@ function getMovies() {
 
 function LoadMov() {
 
-  fetch('https://my-movies.online/api/movies', {
+  fetch('https://my-movies.online/api/movies/id', {
     method: 'GET',
     headers: {
       Accept: 'application/json',
@@ -267,8 +273,13 @@ function uploadAvatar() {
 
 function editacc(){
 
-  var name = document.getElementById("name").value
-  var bio = document.getElementById("bio").value
+  if(document.getElementById("name").value != ""){
+    var name = document.getElementById("name").value
+  }
+  if(document.getElementById("bio").value != ""){
+    var bio = document.getElementById("bio").value
+  }
+  
 
   fetch('http://my-movies.online/api/editProfile', {
     method: 'POST',
