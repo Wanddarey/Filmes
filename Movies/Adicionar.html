@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
         crossorigin="anonymous"></script>
-    <script src="Script.js"></script>
+    <script src="Addmov.js"></script>
     <link rel="stylesheet" href="styles.css">
     <title>Document</title>
 </head>
@@ -23,28 +23,43 @@
                 aria-expanded="false">
                 Menu
             </a>
+
+            <ul style="font-size: 20px;" class="dropdown-menu">
+                <li style="margin-left: 10px;"><a class="nav-link" href="#">conta</a></li>
+                <li style="margin-left: 10px;"><a class="nav-link active" aria-current="page"
+                        href="Filmes.html">Filmes</a></li>
+                <li style="margin-left: 10px;"><a class="nav-link" href="#">Add Movie</a></li>
+            </ul>
         </div>
-        <h1 class="text-center">Adicionar Filmes</h1>
+        <h1 class="text-center">Site do Lukash e Rubão</h1>
     </div>
 
-    <div class="container-md w-50 p-3">
+    <h1 class="text-center">Adicionar Filmes</h1>
 
-        <div style="margin: 5%;">
-            <input onchange="" type="file" id="inputFile">
-        </div>
+    <div class="container-md w-50 p-3">
 
         <div style="background-color: white;">
             <img id="imgmo" class="imgg mx-auto d-block" src="gene.png">
         </div>
-        
+
+        <div style="margin: 5%;">
+            <input onchange="imgchng()" type="file" accept="image/*" id="inputFile">
+        </div>
 
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Nome do filme:</label>
             <input type="text" class="form-control" id="name" placeholder="Name">
             <label for="exampleFormControlInput1" class="form-label">Descrição:</label>
-            <input type="text" class="form-control" id="name" placeholder="Name">
+            <textarea name="Description" class="form-control" id="description" placeholder="Description"></textarea>
+            <label for="exampleFormControlInput1" class="form-label">Tipo</label>
+            <input type="text" class="form-control" id="tipo" placeholder="Description">
         </div>
+
+        <button onclick="addMov()" type="button" class="btn btn-primary btn-lg mx-auto d-block">Add Movie</button>
+
     </div>
+
+
 
 </body>
 

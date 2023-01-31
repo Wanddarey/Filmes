@@ -172,13 +172,17 @@ function getMovies() {
           img.className = "imgg mx-auto d-block";
           img.src = filme.avatar;
 
-          var h5 = document.createElement("h5");
-          h5.className = "card-title";
-          h5.innerText = filme.description;
+          var h4 = document.createElement("h4");
+          h4.className = "descr";
+          h4.innerText = filme.tipo;
+
+          var h6 = document.createElement("h6");
+          h6.className = "descr card-title";
+          h6.innerText = "Type: " + filme.tipo;
 
           divCardBody.append(img)
           divCardBody.append(a)
-          divCardBody.append(h5)
+          divCardBody.append(h6)
           divCard.append(divCardBody)
           divCol.append(divCard)
           divRow.append(divCol)
@@ -208,13 +212,13 @@ function getMovies() {
           img.className = "imgg mx-auto d-block";
           img.src = filme.avatar;
 
-          var h5 = document.createElement("h5");
-          h5.className = "card-title";
-          h5.innerText = filme.description;
+          var h6 = document.createElement("h6");
+          h6.className = "descr card-title";
+          h6.innerText = "Type: " + filme.tipo;
 
           divCardBody.append(img)
           divCardBody.append(a)
-          divCardBody.append(h5)
+          divCardBody.append(h6)
           divCard.append(divCardBody)
           divCol.append(divCard)
           divRow.append(divCol)
