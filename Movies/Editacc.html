@@ -12,7 +12,7 @@
     <title>Edit account</title>
 </head>
 
-<body style="background-color: black; color: white;">
+<body onload="getProfileedit()" style="background-color: black; color: white;">
     <div>
         <div style="margin: 5px;" class="dropdown">
         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -31,7 +31,6 @@
 
         <div style="margin: 5%;">
             <input type="file" id="inputFile">
-<button onclick="uploadAvatar()">UploadAvatar!</button>
         </div>
 
         <div class="text-center">
@@ -48,10 +47,10 @@
         </div>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Bio:</label>
-            <input type="text" class="form-control" id="bio:" placeholder="Bio">
+            <input type="text" class="form-control" id="bio" placeholder="Bio">
         </div>
         <div class="text-center">
-            <button onclick="registeracc()" type="button" class="btn btn-primary">Create account</button>
+            <button onclick="uploadAvatar(), editacc()" type="button" class="btn btn-primary">Edit account</button>
         </div>
     </div>
 </body>

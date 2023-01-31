@@ -71,9 +71,10 @@ function login() {
 
 }
 
-function logout(){
+function logout() {
 
-localStorage.
+  localStorage.removeItem('token')
+  location.replace("Index.html")
 
 }
 
@@ -111,7 +112,9 @@ function getProfile() {
       var date = datetime[0]
       console.log(datetime[1].split(".")[0])
       var time = datetime[1].split(".")[0]
-
+      if (responseJson.user.avatar != null) {
+        document.getElementById("imgprof").src = responseJson.user.avatar
+      }
       document.getElementById("titulo").innerText = responseJson.user.name
       document.getElementById("conteudo").innerText
         = "Email: " + responseJson.user.email + "\n"
@@ -206,7 +209,9 @@ function getMovies() {
           img.src = filme.avatar;
 
           var h5 = document.createElement("h5");
-          
+          h5.className = "card-title";
+          h5.innerText = filme.description;
+
           divCardBody.append(img)
           divCardBody.append(a)
           divCardBody.append(h5)
@@ -225,8 +230,6 @@ function getMovies() {
       console.log(error);
     });
 }
-
-
 
 function LoadMov() {
 
@@ -271,21 +274,20 @@ function uploadAvatar() {
     });
 }
 
-function editacc(){
+function editacc() {
 
-  if(document.getElementById("name").value != ""){
-    var name = document.getElementById("name").value
-  }
-  if(document.getElementById("bio").value != ""){
-    var bio = document.getElementById("bio").value
-  }
-  
+  var token = localStorage.getItem("token")
+
+  var name = document.getElementById("name").value
+
+  var bio = document.getElementById("bio").value
 
   fetch('http://my-movies.online/api/editProfile', {
     method: 'POST',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
     },
     body: JSON.stringify({
       name: name,
@@ -296,11 +298,40 @@ function editacc(){
       console.log(responseJson);
 
       if (responseJson.message == "") {
-        alert("conta editada com sucesso")
-      }
-      else {
         alert("não foi possivel editar a conta")
       }
+      else {
+        alert("conta editada com sucesso")
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
+}
+
+function getProfileedit() {
+
+  var token = localStorage.getItem("token")
+
+  fetch('http://my-movies.online/api/profile', {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    }
+  }).then((response) => response.json())
+    .then((responseJson) => {
+      console.log(responseJson);
+      var datetime = responseJson.user.created_at.split("T")
+      var date = datetime[0]
+      console.log(datetime[1].split(".")[0])
+      var time = datetime[1].split(".")[0]
+
+      document.getElementById("name").value = responseJson.user.name
+      document.getElementById("bio").value = responseJson.user.bio
+
     })
     .catch((error) => {
       console.log(error);
