@@ -1,14 +1,3 @@
-function imgchng() {
-
-    const reader = new FileReader()
-
-    let files = document.getElementById('inputFile').files
-    reader.onload = async (event) => {
-        document.getElementById('imgmo').setAttribute('src', event.target.result)
-    }
-    console.log(reader.readAsDataURL(files[0]))
-}
-
 function addMov() {
 
     var token = localStorage.getItem("token");
@@ -34,14 +23,29 @@ function addMov() {
           'Authorization': 'Bearer ' + token
         }
       };
-
-    fetch('https://meus-filmes.pt/api/createMovie', options)
+    try {
+        fetch('https://meus-filmes.pt/api/createMovie', options)
     .then((response) => response.json())
         .then((responseJson) => {
             console.log(responseJson);
+                alert("Movie added")
+
+                document.getElementById("imgmo").src = "th.jpg"
+
+                document.getElementById("name").value = null
+
+                document.getElementById("description").value = null
+
+                document.getElementById("tipo").value = null
+
         })
         .catch((error) => {
             console.log(error);
         });
+    } catch (error) {
+        alert("Error")
+        console.log(error)
+    }
+    
 
 }

@@ -59,7 +59,7 @@ function login() {
       if (responseJson.token != null) {
         alert("sucesso")
         localStorage.setItem("token", responseJson.token);
-        location.replace("user.html");
+        location.replace("Filmes.html");
       }
       else {
         alert("email ou password errada")
@@ -89,7 +89,7 @@ function checklogin() {
   console.log(token)
 
   if (token != null) {
-    location.replace("user.html")
+    location.replace("Filmes.html")
   }
 
 }
@@ -215,3 +215,4 @@ function getProfileedit() {
     });
 
 }
+

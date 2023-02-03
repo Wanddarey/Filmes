@@ -9,30 +9,30 @@
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
         crossorigin="anonymous"></script>
     <script src="Addmov.js"></script>
+    <script src="geral.js"></script>
     <link rel="stylesheet" href="styles.css">
     <title>Document</title>
 </head>
 
 
 
-<body style="background-color: rgb(0, 0, 0); background-size: cover; color: white;" background="">
+<body onload="getpfp()" style="background-color: rgb(0, 0, 0); background-size: cover; color: white;" background="">
 
-    <div>
-        <div style="margin: 5px;" class="dropdown">
-            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                Menu
-            </a>
-
-            <ul style="font-size: 20px;" class="dropdown-menu">
-                <li style="margin-left: 10px;"><a class="nav-link" href="#">conta</a></li>
-                <li style="margin-left: 10px;"><a class="nav-link active" aria-current="page"
-                        href="Filmes.html">Filmes</a></li>
-                <li style="margin-left: 10px;"><a class="nav-link" href="#">Add Movie</a></li>
-            </ul>
+    <div class="hstack gap-2">
+        <div style="margin: 5px;" class="dropdown col">
+          <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Menu
+          </a>
+    
+          <ul style="font-size: 20px;" class="dropdown-menu">
+            <li style="margin-left: 10px;"><a class="nav-link active" aria-current="page" href="Filmes.html">Filmes</a></li>
+            <li style="margin-left: 10px;"><a class="nav-link" href="#">Add Movie</a></li>
+          </ul>
         </div>
-        <h1 class="text-center">Site do Lukash e Rubão</h1>
-    </div>
+        <img id="pfp" onclick="openProfile()" class="pfp" src="th.jpg" alt="">
+      </div>
+        <h1 class="text-center col">Site do Lukash e Rubão</h1>
 
     <h1 class="text-center">Adicionar Filmes</h1>
 
