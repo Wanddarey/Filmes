@@ -8,7 +8,7 @@ function registeracc() {
 
   var password = document.getElementById("password").value
 
-  fetch('http://my-movies.online/api/register', {
+  fetch('http://meus-filmes.pt/api/register', {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -42,7 +42,7 @@ function login() {
 
   var password = document.getElementById("password").value
 
-  fetch('http://my-movies.online/api/login', {
+  fetch('http://meus-filmes.pt/api/login', {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -98,7 +98,7 @@ function getProfile() {
 
   var token = localStorage.getItem("token")
 
-  fetch('http://my-movies.online/api/profile', {
+  fetch('http://meus-filmes.pt/api/profile', {
     method: 'GET',
     headers: {
       Accept: 'application/json',
@@ -126,133 +126,6 @@ function getProfile() {
 
 }
 
-function getMovies() {
-
-  var num = 0;
-  var idcnt = 0;
-
-  fetch('https://my-movies.online/api/movies', {
-    method: 'GET',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-  }).then((response) => response.json())
-    .then((responseJson) => {
-      console.log(responseJson);
-      for (const filme of responseJson.movies) {
-        console.log(filme.name);
-
-        if (num == 0) {
-          var divSup = document.createElement("div");
-          divSup.style = "text-align: center;";
-
-          var divSup1 = document.createElement("div");
-          divSup1.style = "margin: 5%;";
-
-          var divRow = document.createElement("div");
-          divRow.className = "row";
-          divRow.id = "rowplcm" + idcnt;
-
-          var divCol = document.createElement("div");
-          divCol.className = "col-sm-6 mb-3 mb-sm-0";
-
-          var divCard = document.createElement("div");
-          divCard.className = "card";
-
-          var divCardBody = document.createElement("div");
-          divCardBody.className = "card-body";
-
-          var a = document.createElement("a");
-          a.className = "titulo";
-          a.innerText = filme.name;
-          a.href = "Filme.html"
-
-          var img = document.createElement("img");
-          img.className = "imgg mx-auto d-block";
-          img.src = filme.avatar;
-
-          var h4 = document.createElement("h4");
-          h4.className = "descr";
-          h4.innerText = filme.tipo;
-
-          var h6 = document.createElement("h6");
-          h6.className = "descr card-title";
-          h6.innerText = "Type: " + filme.tipo;
-
-          divCardBody.append(img)
-          divCardBody.append(a)
-          divCardBody.append(h6)
-          divCard.append(divCardBody)
-          divCol.append(divCard)
-          divRow.append(divCol)
-          divSup1.append(divRow)
-          divSup.append(divSup1)
-          document.getElementById("bodymov").append(divSup)
-
-          num = 1;
-        }
-        else {
-
-          var divCol = document.createElement("div");
-          divCol.className = "col-sm-6 mb-3 mb-sm-0";
-
-          var divCard = document.createElement("div");
-          divCard.className = "card";
-
-          var divCardBody = document.createElement("div");
-          divCardBody.className = "card-body";
-
-          var a = document.createElement("a");
-          a.className = "titulo";
-          a.innerText = filme.name;
-          a.href = "Filme.html"
-
-          var img = document.createElement("img");
-          img.className = "imgg mx-auto d-block";
-          img.src = filme.avatar;
-
-          var h6 = document.createElement("h6");
-          h6.className = "descr card-title";
-          h6.innerText = "Type: " + filme.tipo;
-
-          divCardBody.append(img)
-          divCardBody.append(a)
-          divCardBody.append(h6)
-          divCard.append(divCardBody)
-          divCol.append(divCard)
-          divRow.append(divCol)
-
-          document.getElementById("rowplcm" + idcnt).append(divCol)
-
-          idcnt += 1;
-          num = 0;
-        }
-      }
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-}
-
-function LoadMov() {
-
-  fetch('https://my-movies.online/api/movies/id', {
-    method: 'GET',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-  }).then((response) => response.json())
-    .then((responseJson) => {
-      console.log(responseJson);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-
-}
-
 function uploadAvatar() {
   var token = localStorage.getItem("token");
   const fileInput = document.querySelector('#inputFile');
@@ -268,7 +141,7 @@ function uploadAvatar() {
     }
   };
 
-  fetch('https://my-movies.online/api/uploadAvatar', options)
+  fetch('https://meus-filmes.pt/api/uploadAvatar', options)
     .then((response) => response.json())
     .then((responseJson) => {
       console.log(responseJson);
@@ -286,7 +159,7 @@ function editacc() {
 
   var bio = document.getElementById("bio").value
 
-  fetch('http://my-movies.online/api/editProfile', {
+  fetch('http://meus-filmes.pt/api/editProfile', {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -318,7 +191,7 @@ function getProfileedit() {
 
   var token = localStorage.getItem("token")
 
-  fetch('http://my-movies.online/api/profile', {
+  fetch('http://meus-filmes.pt/api/profile', {
     method: 'GET',
     headers: {
       Accept: 'application/json',

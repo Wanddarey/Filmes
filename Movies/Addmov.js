@@ -35,7 +35,7 @@ function addMov() {
         }
       };
 
-    fetch('https://my-movies.online/api/createMovie', options)
+    fetch('https://meus-filmes.pt/api/createMovie', options)
     .then((response) => response.json())
         .then((responseJson) => {
             console.log(responseJson);
