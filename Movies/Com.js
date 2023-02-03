@@ -1,8 +1,8 @@
 function getcomms() {
 
-    var movid = parseInt(document.getElementById("movid").innerText)
+    var idfilme = localStorage.getItem("filmeId")
 
-    fetch('https://meus-filmes.pt/api/comments/idMovie', {
+    fetch('https://meus-filmes.pt/api/comments/' + idfilme, {
         method: 'GET',
         headers: {
             Accept: 'application/json',
@@ -16,5 +16,11 @@ function getcomms() {
         .catch((error) => {
             console.log(error);
         });
+
+}
+
+function ratchng(){
+
+document.getElementById("rtng").innerText = "Rating: " + document.getElementById("range").value;
 
 }
