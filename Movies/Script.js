@@ -201,10 +201,6 @@ function getProfileedit() {
   }).then((response) => response.json())
     .then((responseJson) => {
       console.log(responseJson);
-      var datetime = responseJson.user.created_at.split("T")
-      var date = datetime[0]
-      console.log(datetime[1].split(".")[0])
-      var time = datetime[1].split(".")[0]
 
       document.getElementById("name").value = responseJson.user.name
       document.getElementById("bio").value = responseJson.user.bio
