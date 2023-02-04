@@ -131,6 +131,12 @@ function LoadMov() {
         }).then((response) => response.json())
             .then((responseJson) => {
                 console.log(responseJson);
+
+                document.getElementById("imgmovie").src = responseJson.movie.avatar;
+                document.getElementById("nomemovie").innerText = responseJson.movie.name;
+                document.getElementById("descmovie").innerText = responseJson.movie.description;
+                document.getElementById("tipomovie").innerText = responseJson.movie.tipo;
+
             })
             .catch((error) => {
                 console.log(error);
