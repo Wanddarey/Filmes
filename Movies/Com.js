@@ -20,15 +20,22 @@ function getcomms() {
                     commentinfo.className = "hstack"
                     commentinfo.style = "margin: 5px;";
 
-                    const comavatar = getcommuser(responseJson.idUser)
+                    const comavatar = getcommuser(comms.idUser)
 
                     var img = document.createElement("img");
                     img.className = "compfp";
                     img.src = comavatar
-                    
 
-                    commentinfo.append(divSup1)
-                    commentinfo.append(divSup1)
+                    var h5 = document.createElement("img");
+                    h5.style="margin-top: 6px;"
+                    h5.innerText = "-" + comms.user
+
+                    var p = document.createElement("p");
+                    img.className = "list-group-item";
+
+                    commentinfo.append(img)
+                    commentinfo.append(h5)
+                    document.getElementById("commentsection").append(commentinfo)
                     document.getElementById("commentsection").append(divSup)
                 }
 
