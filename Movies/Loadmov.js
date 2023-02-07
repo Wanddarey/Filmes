@@ -114,7 +114,6 @@ function getMovies() {
 
 function getid(num) {
     localStorage.setItem("filmeId", num)
-
 }
 
 function LoadMov() {

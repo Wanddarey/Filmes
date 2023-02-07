@@ -116,6 +116,7 @@ function getProfile() {
         document.getElementById("imgprof").src = responseJson.user.avatar
       }
       document.getElementById("titulo").innerText = responseJson.user.name
+      document.getElementById("bio").innerText = responseJson.user.bio
       document.getElementById("conteudo").innerText
         = "Email: " + responseJson.user.email + "\n"
         + "Creation date: " + date + " " + time
@@ -174,8 +175,10 @@ function editacc() {
     .then((responseJson) => {
       console.log(responseJson);
 
-      if (responseJson.message == "") {
+      console.log(responseJson.message)
+      if (responseJson.message == "updated") {
         alert("não foi possivel editar a conta")
+        location.replace("user.html")
       }
       else {
         alert("conta editada com sucesso")
@@ -202,6 +205,7 @@ function getProfileedit() {
     .then((responseJson) => {
       console.log(responseJson);
 
+      document.getElementById("imgmo").src = responseJson.user.avatar
       document.getElementById("name").value = responseJson.user.name
       document.getElementById("bio").value = responseJson.user.bio
 
