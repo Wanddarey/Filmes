@@ -17,6 +17,7 @@
 
 <body onload="LoadMov(), getpfp(), getcomms()" style="background-color: rgb(0, 0, 0); background-size: cover; color: white;">
 
+  <!--Header-->
   <div class="hstack gap-2">
     <div style="margin: 5px;" class="dropdown col">
       <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -29,13 +30,14 @@
         <li style="margin-left: 10px;"><a class="nav-link" href="Adicionar.html">Add Movie</a></li>
       </ul>
     </div>
-    <img id="pfp" onclick="openProfile()" class="pfp" src="th.jpg" alt="">
+    <img id="pfp" onclick="openProfile(), checklogin()" class="pfp" src="th.jpg" alt="">
   </div>
     <h1 class="text-center col">Site do Lukas e Ruben</h1>
+    <!--Header-->
   
 
   <div class="card mx-auto d-block" style="width: 50%; color: black; text-align: center;">
-    <img id="imgmovie" style="margin: 5%;" src="th.jpg" class="card-img-top imgg mx-auto d-block" alt="...">
+    <img id="imgmovie" style="margin: 5%;" src="gene.png" class="card-img-top imgg mx-auto d-block" alt="...">
     <div class="card-body">
       <h4 id="nomemovie" class="card-title">texto</h4>
       <p id="descmovie" class="card-text">texto</p>
@@ -50,13 +52,9 @@
       <h5 class="card-title">Comments</h5>
     </div>
     <ul id="commentsection" class="list-group list-group-flush">
-      <div class="hstack" style="margin: 5px;">
-        <img id="compfp" onclick="" class="compfp" src="th.jpg" alt="">
-        <h5 style="margin-top: 6px;">-Username</h5>
-      </div>
-      <li class="list-group-item">Patrick</li>
-      <li class="list-group-item">é</li>
-      <li class="list-group-item">gay</li>
+
+<!--Comment section-->
+
     </ul>
     <div style="width: 100%;">
       <button type="button" class="btn mx-auto d-block" data-bs-toggle="modal" data-bs-target="#modal1" style="width: 100%; font-weight: bolder;"> Comment</button>
@@ -77,12 +75,11 @@
         <div class="modal-footer">
           <h1 id="rtng">Rating: 5</h1>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button onclick="addcomm()" type="button" class="btn btn-primary">Submit</button>
+          <button onclick="addcomm()" type="button" data-bs-dismiss="modal" class="btn btn-primary">Submit</button>
         </div>
       </div>
     </div>
-  </div>
-  
+  </div> 
 
 </body>
 

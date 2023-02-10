@@ -8,39 +8,66 @@ function getcomms() {
         headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
-            'Authorization' : 'Bearer ' + token
+            'Authorization': 'Bearer ' + token
         },
     }).then((response) => response.json())
         .then((responseJson) => {
             console.log(responseJson);
             for (const comms of responseJson) {
-                if (filme.id > 12) {
 
-                    var commentinfo = document.createElement("div");
-                    commentinfo.className = "hstack"
-                    commentinfo.style = "margin: 5px;";
+                console.log(comms);
 
-                    const comavatar = getcommuser(comms.idUser)
+                var commentinfo = document.createElement("div");
+                commentinfo.className = "commsuserinfo"
 
-                    var img = document.createElement("img");
-                    img.className = "compfp";
-                    img.src = comavatar
+                const userav = getcommuser(comms.idUser)
+                console.log(userav)
 
-                    var h5 = document.createElement("img");
-                    h5.style="margin-top: 6px;"
-                    h5.innerText = "-" + comms.user
+                var img = document.createElement("img");
+                img.className = "compfp";
+                img.id = "compfp"
+                try {
+                    img.src = userav.avatar;
+                } catch (error) {
 
-                    var p = document.createElement("p");
-                    img.className = "list-group-item";
-
-                    commentinfo.append(img)
-                    commentinfo.append(h5)
-                    document.getElementById("commentsection").append(commentinfo)
-                    document.getElementById("commentsection").append(divSup)
                 }
 
+                if (img.src == "") {
+                    img.src = "th.jpg"
+                }
+
+                console.log("commenter profile pic " + userav + " - " + img.src)
+
+                var h5 = document.createElement("h5");
+                h5.className = "commusername"
+                h5.innerText = "-" + comms.nameUser
+
+                console.log("commenter name " + h5.innerText + " " + comms.nameUser)
+
+                // get the value of the comment text
+                const comment = comms.conteudo
+
+                // create a new div to hold the comment
+                const li = document.createElement('li');
+                li.className = "list-group-item";
+
+                // check if the comment includes a URL
+                const urlRegex = /(https?:\/\/[^\s]+)/g;
+                const url = comment.match(urlRegex);
+                if (url) {
+                    // if there is a URL, wrap it in a link
+                    li.innerHTML = comment.replace(urlRegex, `<a target="_blank" rel="noopener noreferrer" href="${url[0]}">${url[0]}</a>`);
+                } else {
+                    // if there is no URL, just add the comment text
+                    li.innerHTML = comment;             
+                }
+                
+                commentinfo.append(img, h5)
+                document.getElementById("commentsection").append(commentinfo)
+                document.getElementById("commentsection").append(li)
+
             }
-            
+
         })
         .catch((error) => {
             console.log(error);
@@ -48,27 +75,29 @@ function getcomms() {
 
 }
 
-function getcommuser(id){
+function getcommuser(id) {
 
     var token = localStorage.getItem("token")
 
-  fetch('http://meus-filmes.pt/api/users/' + id, {
-    method: 'GET',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + token
-    }
-  }).then((response) => response.json())
-    .then((responseJson) => {
-      console.log(responseJson);
+    fetch('http://meus-filmes.pt/api/users/' + id, {
+        method: 'GET',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+        }
+    }).then((response) => response.json())
+        .then((responseJson) => {
+            console.log("getcommuser " + JSON.stringify(responseJson));
 
-      return responseJson.user.avatar
+            const userav = responseJson.user;
 
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+            return userav;
+
+        })
+        .catch((error) => {
+            console.log(error);
+        });
 
 }
 
@@ -101,16 +130,51 @@ function addcomm() {
     }).then((response) => response.json())
         .then((responseJson) => {
             console.log(responseJson);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
 
-            console.log(responseJson.message)
-            if (responseJson.message == "updated") {
-                alert("conta editada com sucesso")
+    var commentinfo = document.createElement("div");
+    commentinfo.className = "commsuserinfo"
 
-                location.replace("user.html")
-            }
-            else {
-                alert("não foi possivel editar a conta")
-            }
+    var img = document.createElement("img");
+    img.className = "compfp";
+    img.id = "compfp"
+
+    if (img.src == "") {
+        img.src = "th.jpg"
+    }
+
+    console.log("commenter profile pic" + " " + img.src)
+
+    var h5 = document.createElement("h5");
+    h5.className = "commusername"
+    h5.innerText = "-" + getcommenterusername()
+
+    var li = document.createElement("li");
+    li.className = "list-group-item";
+    li.innerText = cont
+
+    commentinfo.append(img, h5)
+    document.getElementById("commentsection").append(commentinfo)
+    document.getElementById("commentsection").append(li)
+}
+
+function getcommenterusername() {
+
+    var token = localStorage.getItem("token")
+
+    fetch('http://meus-filmes.pt/api/profile', {
+        method: 'GET',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+        }
+    }).then((response) => response.json())
+        .then((responseJson) => {
+            return responseJson.user.name
         })
         .catch((error) => {
             console.log(error);

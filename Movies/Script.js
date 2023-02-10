@@ -78,20 +78,18 @@ function logout() {
 
 }
 
-function checklogin() {
+function checkloginfirstpage() {
   try {
     var token = localStorage.getItem("token")
+
+    if (token != null) {
+      location.replace("Filmes.html")
+    }
+
+    console.log(token)
   } catch (error) {
     console.log(error)
   }
-
-
-  console.log(token)
-
-  if (token != null) {
-    location.replace("Filmes.html")
-  }
-
 }
 
 function getProfile() {

@@ -28,33 +28,20 @@
     border-radius: 50%;
     width: 20px;
     height: 20px;
+    margin: 3px;
 }
 
-.container {
-    margin-top: 40px;
+.commsuserinfo{
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    align-items: start;
 }
 
-.cardbod {
-    width: 30%;
-    height: 250px;
-    background-color: aliceblue;
-    border-radius: 10px;
+.commusername{
+    color: black;
 }
 
-.Content {
-    align-items: center;
-    text-align: left;
-    height: 90%;
-    margin: 5%;
-}
-
-.showImage{
-    border-radius: 5px;
-    height: auto;
-    width: auto;
-    max-width: 40%;
-    max-height: 60%;
+.imgmovie{
+    max-width: 90%;
+    max-height: 90%;
+    size-adjust: cover;
 }

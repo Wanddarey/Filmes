@@ -4,6 +4,23 @@ function openProfile(){
 
 }
 
+function checklogin() {
+  try {
+    var token = localStorage.getItem("token")
+
+    if (token != null) {
+      getpfp();
+    }
+    else{
+      location.replace("Index.html")
+    }
+
+    console.log(token)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 function imgchng() {
 
     const reader = new FileReader()
