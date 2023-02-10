@@ -31,17 +31,20 @@
     margin: 3px;
 }
 
-.commsuserinfo{
+.commsuserinfo {
     display: flex;
-    align-items: start;
+    align-items: center;
 }
 
-.commusername{
-    color: black;
+.commdt{
+    margin-top: 4px;
 }
 
-.imgmovie{
+.content{
+    list-style-type: none;
+}
+
+.imgmovie {
     max-width: 90%;
     max-height: 90%;
-    size-adjust: cover;
 }

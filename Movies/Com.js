@@ -17,6 +17,9 @@ function getcomms() {
 
                 console.log(comms);
 
+                var comm = document.createElement("div");
+                comm.className = "list-group-item"
+
                 var commentinfo = document.createElement("div");
                 commentinfo.className = "commsuserinfo"
 
@@ -40,7 +43,11 @@ function getcomms() {
 
                 var h5 = document.createElement("h5");
                 h5.className = "commusername"
-                h5.innerText = "-" + comms.nameUser
+                h5.innerText = "-" + comms.nameUser;
+
+                var p = document.createElement('p');
+                p.innerText = " - " + comms.created_at;
+                p.className = "commdt";
 
                 console.log("commenter name " + h5.innerText + " " + comms.nameUser)
 
@@ -49,7 +56,7 @@ function getcomms() {
 
                 // create a new div to hold the comment
                 const li = document.createElement('li');
-                li.className = "list-group-item";
+                li.className = "content";
 
                 // check if the comment includes a URL
                 const urlRegex = /(https?:\/\/[^\s]+)/g;
@@ -59,12 +66,13 @@ function getcomms() {
                     li.innerHTML = comment.replace(urlRegex, `<a target="_blank" rel="noopener noreferrer" href="${url[0]}">${url[0]}</a>`);
                 } else {
                     // if there is no URL, just add the comment text
-                    li.innerHTML = comment;             
+                    li.innerHTML = comment;            
                 }
                 
-                commentinfo.append(img, h5)
-                document.getElementById("commentsection").append(commentinfo)
-                document.getElementById("commentsection").append(li)
+                commentinfo.append(img, h5, p)
+                comm.append(commentinfo)
+                comm.append(li)
+                document.getElementById("commentsection").append(comm)
 
             }
 
@@ -146,7 +154,7 @@ function addcomm() {
         img.src = "th.jpg"
     }
 
-    console.log("commenter profile pic" + " " + img.src)
+    console.log("commenter profile pic" + " " + img.src);
 
     var h5 = document.createElement("h5");
     h5.className = "commusername"
@@ -154,11 +162,11 @@ function addcomm() {
 
     var li = document.createElement("li");
     li.className = "list-group-item";
-    li.innerText = cont
+    li.innerText = cont;
 
-    commentinfo.append(img, h5)
-    document.getElementById("commentsection").append(commentinfo)
-    document.getElementById("commentsection").append(li)
+    commentinfo.append(img, h5);
+    document.getElementById("commentsection").append(commentinfo);
+    document.getElementById("commentsection").append(li);
 }
 
 function getcommenterusername() {
@@ -174,7 +182,7 @@ function getcommenterusername() {
         }
     }).then((response) => response.json())
         .then((responseJson) => {
-            return responseJson.user.name
+            return json.stringify(responseJson.user.name);
         })
         .catch((error) => {
             console.log(error);
