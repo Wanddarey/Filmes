@@ -15,7 +15,8 @@
   <title>Document</title>
 </head>
 
-<body onload="LoadMov(), getpfp(), getcomms()" class="laoding" style="background-color: rgb(0, 0, 0); background-size: cover; color: white;">
+<body onload="LoadMov(), getpfp(), getcomms()"
+style="background-color: rgb(0, 0, 0); background-size: cover; color: white;"> </body>
 
   <!--Header-->
   <div class="hstack gap-2">
@@ -30,11 +31,13 @@
         <li style="margin-left: 10px;"><a class="nav-link" href="Adicionar.html">Add Movie</a></li>
       </ul>
     </div>
-    <img id="pfp" onclick="openProfile(), checklogin()" class="pfp" src="th.jpg" alt="">
+    <div>
+      <img id="pfp" onclick="openProfile(), checklogin()" class="pfp" src="th.jpg" alt="">
+    </div>
   </div>
-    <h1 class="text-center col">Site do Lukas e Ruben</h1>
-    <!--Header-->
-  
+  <h1 class="text-center col">Site do Lukas e Ruben</h1>
+  <!--Header-->
+
 
   <div class="card mx-auto d-block" style="width: 50%; color: black; text-align: center;">
     <img id="imgmovie" style="margin: 5%;" src="gene.png" class="card-img-top imgg mx-auto d-block" alt="...">
@@ -53,24 +56,26 @@
     </div>
     <ul id="commentsection" class="list-group list-group-flush">
 
-<!--Comment section-->
-<div class="list-group-item">
-  <div class="commsuserinfo">
-  <img class="compfp" id="compfp" src="th.jpg">
-  <h5 class="commusername">-Nandinho mendes</h5>
-  <p class="commdt"> - 2023-02-07 15:22:13</p>
-</div>
-<li class="content">teste</li>
-</div>
+      <!--Comment section-->
+      <div class="list-group-item">
+        <div class="commsuserinfo">
+          <img class="compfp" id="compfp" src="th.jpg">
+          <h5 class="commusername">-Nandinho mendes</h5>
+          <p class="commdt"> - 2023-02-07 15:22:13</p>
+        </div>
+        <li class="content">teste</li>
+      </div>
 
 
     </ul>
     <div style="width: 100%;">
-      <button type="button" class="btn mx-auto d-block" data-bs-toggle="modal" data-bs-target="#modal1" style="width: 100%; font-weight: bolder;"> Comment</button>
+      <button type="button" class="btn mx-auto d-block" data-bs-toggle="modal" data-bs-target="#modal1"
+        style="width: 100%; font-weight: bolder;"> Comment</button>
     </div>
   </div>
 
-  <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="color: black;">
+  <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+    style="color: black;">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -88,7 +93,7 @@
         </div>
       </div>
     </div>
-  </div> 
+  </div>
 
 </body>
 
