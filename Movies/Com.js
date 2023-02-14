@@ -1,5 +1,7 @@
 function getcomms() {
 
+    document.getElementById("commentsection").innerHTML = "";
+
     var idfilme = localStorage.getItem("filmeId")
     var token = localStorage.getItem("token")
 

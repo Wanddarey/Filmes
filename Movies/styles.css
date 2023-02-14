@@ -27,10 +27,9 @@
     position: relative;
 
     animation-name: roat;
-    animation-duration: 1s;
+    animation-duration: 1.5s;
     animation-iteration-count: infinite;
     animation-delay: 1s;
-    animation-delay: 1.5s;
 }
 
 @keyframes roat{

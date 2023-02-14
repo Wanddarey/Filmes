@@ -44,6 +44,8 @@ function getMovies() {
                         var img = document.createElement("img");
                         img.className = "imgg mx-auto d-block";
                         img.src = filme.avatar;
+                        img.href = "Filme.html"
+                        img.setAttribute("onclick", "getid(" + filme.id + ")");
 
                         var h4 = document.createElement("h4");
                         h4.className = "descr";
@@ -85,6 +87,8 @@ function getMovies() {
                         var img = document.createElement("img");
                         img.className = "imgg mx-auto d-block";
                         img.src = filme.avatar;
+                        img.href = "Filme.html"
+                        img.setAttribute("onclick", "getid(" + filme.id + ")");
 
                         var h6 = document.createElement("h6");
                         h6.className = "descr card-title";
@@ -113,6 +117,18 @@ function getMovies() {
 
 
 function getid(num) {
+    localStorage.setItem("filmeId", num)
+}
+
+function maisid() {
+    var num = parseInt(localStorage.getItem("filmeId"))
+    num += 1
+    localStorage.setItem("filmeId", num)
+}
+
+function menosid() {
+    var num = parseInt(localStorage.getItem("filmeId"))
+    num -= 1
     localStorage.setItem("filmeId", num)
 }
 
